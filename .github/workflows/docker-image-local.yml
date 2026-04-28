@@ -30,8 +30,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile
+          file: ./Dockerfile-local
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/notes-frontend:${{ github.ref_name }}
-            ghcr.io/${{ github.repository_owner }}/notes-frontend:latest
+            ghcr.io/${{ github.repository_owner }}/notes-frontend-local:${{ github.ref_name }}
+            ghcr.io/${{ github.repository_owner }}/notes-frontend-local:latest
