@@ -2,6 +2,11 @@
   <h1>Notes</h1>
 
   <div v-if="response.isSuccessful">
+    <div style="display: grid">
+      <input v-model="title" placeholder="title">
+      <input v-model="description" placeholder="description">
+      <button @click="createNote" style="margin-bottom: 12px">CREATE</button>
+    </div>
     <div class="note" v-for="note in response.notes" :key="note.id">
       <div style="display: flex">
         <div style="flex: 1">
@@ -16,7 +21,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { Api } from '@/Api';
 
 const api = new Api()
@@ -27,6 +32,16 @@ const response = reactive({
 })
 
 readAllNotes()
+
+const title = ref('')
+const description = ref('')
+
+function createNote() {
+  api
+      .createNote(title.value, description.value)
+      .then(() => readAllNotes())
+      .catch(error => console.log(error));
+}
 
 function readAllNotes() {
   api
@@ -60,6 +75,14 @@ body {
   text-align: center;
   color: darkslategrey;
   margin-top: 60px;
+}
+
+input {
+  padding: 12px
+}
+
+button {
+  padding: 12px
 }
 
 .note {
