@@ -3,9 +3,9 @@
 
   <div v-if="response.isSuccessful">
     <div style="display: grid">
-      <input v-model="title" placeholder="title">
-      <input v-model="description" placeholder="description">
-      <button @click="createNote" style="margin-bottom: 12px">CREATE</button>
+      <input v-model="title" placeholder="title" style="margin-bottom: 6px">
+      <input v-model="description" placeholder="description" style="margin-bottom: 6px">
+      <button id="create" @click="createNote" style="margin-bottom: 12px" :disabled="title.length === 0">CREATE</button>
     </div>
     <div class="note" v-for="note in response.notes" :key="note.id">
       <div style="display: flex">
@@ -39,7 +39,12 @@ const description = ref('')
 function createNote() {
   api
       .createNote(title.value, description.value)
-      .then(() => readAllNotes())
+      .then(() => {
+        title.value = ''
+        description.value = ''
+
+        readAllNotes()
+      })
       .catch(error => console.log(error));
 }
 
@@ -77,8 +82,30 @@ body {
   margin-top: 60px;
 }
 
+button#create {
+  padding: 16px;
+  color: white;
+  background-color: darkslategrey;
+  border-radius: 8px;
+  border: none;
+}
+
+button#create:disabled {
+  background-color: slategrey;
+}
+
+button#create:hover {
+  background-color: slategrey;
+}
+
+button#create:active {
+  background-color: darkslategrey;
+}
+
 input {
-  padding: 12px
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid lightgray;
 }
 
 button {
