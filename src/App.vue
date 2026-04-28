@@ -17,17 +17,19 @@
 
 <script setup>
 import { ref } from 'vue'
-
-fetchNotes()
+import { Api } from '@/Api';
 
 const responseSuccessful = ref(true);
 const notes = ref();
 const responseError = ref();
 
-const baseUrl = 'http://localhost:4000/api/v1/notes'
+const api = new Api()
 
-function fetchNotes() {
-  fetch(baseUrl)
+readAllNotes()
+
+function readAllNotes() {
+  api
+      .readAllNotes()
       .then(response => {
         responseSuccessful.value = response.status === 200;
         return response.json();
@@ -36,12 +38,9 @@ function fetchNotes() {
 }
 
 function deleteNote(id) {
-  fetch(baseUrl + '/' + id, {
-    method: 'delete'
-  }).then(response => {
-    console.log(response);
-    fetchNotes();
-  });
+  api
+      .deleteNote(id)
+      .then(() => readAllNotes());
 }
 </script>
 
