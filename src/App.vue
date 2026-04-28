@@ -1,8 +1,8 @@
 <template>
   <h1>Notes</h1>
 
-  <div v-if="responseSuccessful">
-    <div class="note" v-for="note in notes" :key="note.id">
+  <div v-if="response.isSuccessful">
+    <div class="note" v-for="note in response.notes" :key="note.id">
       <div style="display: flex">
         <div style="flex: 1">
           <h2>{{ note.title }}</h2>
@@ -16,25 +16,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { reactive } from 'vue'
 import { Api } from '@/Api';
 
-const responseSuccessful = ref(true);
-const notes = ref();
-const responseError = ref();
-
 const api = new Api()
+
+const response = reactive({
+  isSuccessful: true,
+  notes: null,
+})
 
 readAllNotes()
 
 function readAllNotes() {
   api
       .readAllNotes()
-      .then(response => {
-        responseSuccessful.value = response.status === 200;
-        return response.json();
-      }).then(data => notes.value = data)
-      .catch(error => responseError.value = error);
+      .then(res => {
+        response.isSuccessful = res.status === 200;
+        return res.json();
+      }).then(data => response.notes = data)
+      .catch(error => console.log(error));
 }
 
 function deleteNote(id) {
