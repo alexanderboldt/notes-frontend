@@ -30,7 +30,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile-kubernetes
+          file: ./Dockerfile
+          build-args: BACKEND_BASE_URL=http://192.168.49.2:30000
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/notes-frontend-kubernetes:${{ github.ref_name }}
