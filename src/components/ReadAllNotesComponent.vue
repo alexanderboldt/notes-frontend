@@ -1,6 +1,6 @@
 <script setup>
-import { reactive } from "vue";
-import { Api } from "@/Api";
+import { reactive } from "vue"
+import { Api } from "@/Api"
 
 const api = new Api()
 
@@ -18,13 +18,13 @@ function readAllNotes() {
         response.isSuccessful = res.status === 200;
         return res.json();
       }).then(data => response.notes = data)
-      .catch(error => console.log(error));
+      .catch(error => console.log(error))
 }
 
 function deleteNote(id) {
   api
       .deleteNote(id)
-      .then(() => readAllNotes());
+      .then(() => readAllNotes())
 }
 
 defineExpose({readAllNotes})

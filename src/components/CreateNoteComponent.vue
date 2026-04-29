@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from "vue";
-import { Api } from "@/Api";
+import { ref } from "vue"
+import { Api } from "@/Api"
 
 const api = new Api()
 
@@ -17,7 +17,7 @@ function createNote() {
         description.value = ''
 
         emit('isNoteCreated', true)
-      }).catch(error => console.log(error));
+      }).catch(error => console.log(error))
 }
 </script>
 
