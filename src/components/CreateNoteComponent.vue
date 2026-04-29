@@ -23,8 +23,8 @@ function createNote() {
 
 <template>
   <div style="display: grid">
-    <input v-model="title" placeholder="title" style="margin-bottom: 6px">
-    <input v-model="description" placeholder="description" style="margin-bottom: 6px">
+    <input v-model="title" placeholder="Title" style="margin-bottom: 6px">
+    <input v-model="description" placeholder="Description" style="margin-bottom: 6px">
     <button id="create" @click="createNote" style="margin-bottom: 12px" :disabled="title.length === 0">CREATE</button>
   </div>
 </template>
