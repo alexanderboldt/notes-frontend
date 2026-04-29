@@ -1,28 +1,7 @@
-<template>
-  <h1>Notes</h1>
-
-  <div v-if="response.isSuccessful">
-    <div style="display: grid">
-      <input v-model="title" placeholder="title" style="margin-bottom: 6px">
-      <input v-model="description" placeholder="description" style="margin-bottom: 6px">
-      <button id="create" @click="createNote" style="margin-bottom: 12px" :disabled="title.length === 0">CREATE</button>
-    </div>
-    <div class="note" v-for="note in response.notes" :key="note.id">
-      <div style="display: flex">
-        <div style="flex: 1">
-          <h2>{{ note.title }}</h2>
-          <div>{{ note.description }}</div>
-        </div>
-        <button class="delete" @click="deleteNote(note.id)">DELETE</button>
-      </div>
-    </div>
-  </div>
-  <div v-else>Could not load notes!</div>
-</template>
-
 <script setup>
 import { reactive, ref } from 'vue'
-import { Api } from '@/Api';
+import { Api } from '@/Api'
+import CreateNoteComponent from './components/CreateNoteComponent.vue'
 
 const api = new Api()
 
@@ -32,21 +11,6 @@ const response = reactive({
 })
 
 readAllNotes()
-
-const title = ref('')
-const description = ref('')
-
-function createNote() {
-  api
-      .createNote(title.value, description.value)
-      .then(() => {
-        title.value = ''
-        description.value = ''
-
-        readAllNotes()
-      })
-      .catch(error => console.log(error));
-}
 
 function readAllNotes() {
   api
@@ -65,6 +29,24 @@ function deleteNote(id) {
 }
 </script>
 
+<template>
+  <h1>Notes</h1>
+
+  <div v-if="response.isSuccessful">
+    <CreateNoteComponent @isNoteCreated="readAllNotes" />
+    <div class="note" v-for="note in response.notes" :key="note.id">
+      <div style="display: flex">
+        <div style="flex: 1">
+          <h2>{{ note.title }}</h2>
+          <div>{{ note.description }}</div>
+        </div>
+        <button class="delete" @click="deleteNote(note.id)">DELETE</button>
+      </div>
+    </div>
+  </div>
+  <div v-else>Could not load notes!</div>
+</template>
+
 <style>
 body {
   background-color: aliceblue;
@@ -82,37 +64,7 @@ body {
   margin-top: 60px;
 }
 
-button#create {
-  padding: 16px;
-  color: white;
-  background-color: darkslategrey;
-  border-radius: 8px;
-  border: none;
-}
-
-button#create:disabled {
-  background-color: slategrey;
-}
-
-button#create:hover {
-  background-color: slategrey;
-}
-
-button#create:active {
-  background-color: darkslategrey;
-}
-
-input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid lightgray;
-}
-
-button {
-  padding: 12px
-}
-
-.note {
+div.note {
   text-align: left;
   border: 1px solid lightgray;
   border-radius: 8px;
@@ -121,20 +73,21 @@ button {
   color: darkslategrey;
 }
 
-.delete {
+button.delete {
   color: white;
   background-color: crimson;
   width: 68px;
   height: 48px;
+  padding: 12px;
   border-radius: 0px 8px;
   border: none;
 }
 
-.delete:hover {
+button.delete:hover {
   background-color: brown;
 }
 
-.delete:active {
+button.delete:active {
   background-color: crimson;
 }
 </style>
