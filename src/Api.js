@@ -1,5 +1,5 @@
 export class Api {
-    baseUrl = process.env.VUE_APP_BACKEND_BASE_URL
+    baseUrl = import.meta.env.VITE_BACKEND_BASE_URL
 
     createNote(title, description) {
         return fetch(

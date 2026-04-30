@@ -5,7 +5,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 ARG BACKEND_BASE_URL
-ENV VUE_APP_BACKEND_BASE_URL=$BACKEND_BASE_URL
+ENV VITE_BACKEND_BASE_URL=$BACKEND_BASE_URL
 RUN npm run build
 
 # production stage
