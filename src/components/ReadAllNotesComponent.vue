@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from "vue"
+import { reactive } from "vue"
 import { Api } from "@/Api"
 
 const api = new Api()
@@ -38,6 +38,7 @@ defineExpose({readAllNotes})
     <div v-if="response.notesAvailable">
       <div class="noteRow" v-for="note in response.notes" :key="note.id">
         <div class="noteContent">
+          <p>{{ new Date(note.createdAt).toLocaleString() }}</p>
           <h2>{{ note.title }}</h2>
           <div><p>{{ note.description }}</p></div>
         </div>
