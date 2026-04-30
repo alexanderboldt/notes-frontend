@@ -30,28 +30,16 @@ function createNote() {
 </template>
 
 <style scoped>
-input {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid lightgray;
-}
-
 button#create {
-  padding: 16px;
   color: white;
   background-color: darkslategrey;
-  border-radius: 8px;
-  border: none;
 }
-
 button#create:disabled {
   background-color: slategrey;
 }
-
 button#create:hover {
   background-color: slategrey;
 }
-
 button#create:active {
   background-color: darkslategrey;
 }

@@ -55,7 +55,7 @@ div.noteRow {
   display: flex;
   text-align: left;
   border: 1px solid lightgray;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   padding: 0px 0px 12px 12px;
   margin-bottom: 12px;
   color: darkslategrey;
@@ -68,17 +68,12 @@ div.noteContent {
 button.delete {
   color: white;
   background-color: crimson;
-  width: 68px;
   height: 48px;
-  padding: 12px;
-  border-radius: 0px 8px;
-  border: none;
+  border-radius: 0px var(--border-radius);
 }
-
 button.delete:hover {
   background-color: brown;
 }
-
 button.delete:active {
   background-color: crimson;
 }

@@ -19,6 +19,10 @@ function readAllNotes() {
 </template>
 
 <style>
+:root {
+  --border-radius: 8px;
+}
+
 body {
   background-color: aliceblue;
 }
@@ -40,9 +44,15 @@ body {
 
 input {
   font-size: 16px;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  border: 1px solid lightgray;
 }
 
 button {
   font-weight: bold;
+  padding: 16px;
+  border-radius: var(--border-radius);
+  border: none;
 }
 </style>
