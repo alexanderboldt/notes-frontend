@@ -1,24 +1,16 @@
-# notes-frontend
+# :notebook: Notes-Frontend
 
-## Project setup
-```
-npm install
-```
+This is a frontend application for managing notes. Made with Vue.js and vite.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## :whale: Install with Docker
+Make sure the backend setup is done, so this app can access it locally.
 
-### Compiles and minifies for production
-```
-npm run build
+Create and start the container:
+```bash
+docker compose up -d
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+Open the app with the following url: `http://localhost:4100`
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## :wheel: Install with Kubernetes
+The dedicated backend project already includes this app in the kubernetes settings.
