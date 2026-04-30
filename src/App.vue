@@ -24,7 +24,6 @@ body {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 1000px;
@@ -33,5 +32,17 @@ body {
   text-align: center;
   color: darkslategrey;
   margin-top: 60px;
+}
+
+#app, input {
+  font-family: Serif, sans-serif, Arial;
+}
+
+input {
+  font-size: 16px;
+}
+
+button {
+  font-weight: bold;
 }
 </style>
