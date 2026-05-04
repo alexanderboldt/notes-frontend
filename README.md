@@ -14,3 +14,6 @@ Open the app with the following url: `http://localhost:4100`
 
 ## :wheel: Install with Kubernetes
 The dedicated backend project already includes this app in the kubernetes settings.
+
+## Screenshots
+![Overview](screenshots/screenshot.png)
