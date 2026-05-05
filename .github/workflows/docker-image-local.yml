@@ -34,5 +34,4 @@ jobs:
           build-args: BACKEND_BASE_URL=http://localhost:4000
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/notes-frontend-local:${{ github.ref_name }}
-            ghcr.io/${{ github.repository_owner }}/notes-frontend-local:latest
+            ghcr.io/${{ github.repository_owner }}/notes-frontend:${{ github.ref_name }}-local
