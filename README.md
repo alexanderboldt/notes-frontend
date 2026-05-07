@@ -2,7 +2,7 @@
 
 This is a frontend application for managing notes. Made with Vue.js and vite.
 
-## Screenshots
+## :framed_picture: Screenshots
 ![Overview](screenshots/screenshot.png)
 
 ## :computer: Tech-Stack
