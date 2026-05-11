@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue"
-import { Api } from "@/Api"
+import { Api } from "../Api"
 
 const api = new Api()
 
@@ -33,6 +33,7 @@ function createNote() {
 button#create {
   color: white;
   background-color: darkslategrey;
+  cursor: pointer;
 }
 button#create:disabled {
   background-color: slategrey;
