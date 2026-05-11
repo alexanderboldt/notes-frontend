@@ -28,20 +28,3 @@ function createNote() {
     <button id="create" @click="createNote" style="margin-bottom: 12px" :disabled="title.length === 0">CREATE</button>
   </div>
 </template>
-
-<style scoped>
-button#create {
-  color: white;
-  background-color: darkslategrey;
-  cursor: pointer;
-}
-button#create:disabled {
-  background-color: slategrey;
-}
-button#create:hover {
-  background-color: slategrey;
-}
-button#create:active {
-  background-color: darkslategrey;
-}
-</style>

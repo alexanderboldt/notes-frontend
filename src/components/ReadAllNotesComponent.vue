@@ -116,9 +116,6 @@ div.noteContent {
 }
 
 button {
-  color: white;
-  background-color: darkslategrey;
-  border-radius: 0px;
   margin-right: 8px;
 }
 button:hover {
@@ -128,7 +125,7 @@ button:hover {
 button.delete {
   color: white;
   background-color: crimson;
-  border-radius: 0px var(--border-radius) 0px 0px;
+  margin-right: 0px;
 }
 button.delete:hover {
   background-color: brown;

@@ -1,5 +1,5 @@
 :root {
-  --border-radius: 8px;
+  --border-radius: 4px;
 }
 
 body {
@@ -29,6 +29,8 @@ input {
 }
 
 button {
+  color: white;
+  background-color: darkslategrey;
   font-weight: bold;
   padding: 16px;
   border-radius: var(--border-radius);
@@ -36,4 +38,13 @@ button {
   border: none;
   height: 48px;
   cursor: pointer;
+}
+button:disabled {
+  background-color: slategrey;
+}
+button:hover {
+  background-color: slategrey;
+}
+button:active {
+  background-color: darkslategrey;
 }
