@@ -1,6 +1,6 @@
 services:
   notes-frontend:
-    image: ghcr.io/alexanderboldt/notes-frontend:0.6.0-local
+    image: ghcr.io/alexanderboldt/notes-frontend:1.0.0-local
     container_name: notes-frontend
     ports:
       - 4100:80
