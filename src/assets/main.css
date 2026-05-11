@@ -34,4 +34,6 @@ button {
   border-radius: var(--border-radius);
   transition: 0.1s;
   border: none;
+  height: 48px;
+  cursor: pointer;
 }

@@ -39,12 +39,26 @@ function deleteNote(id) {
       .then(() => readAllNotes())
 }
 
+function uploadImage(id, event) {
+  const file = event.target.files[0]
+  if (file) {
+    api
+        .uploadImage(id, file)
+        .then(res => readAllNotes())
+        .catch(error => console.log(error))
+  }
+}
+
 function downloadImage(id) {
   api
       .downloadImage(id)
       .then(res => res.blob())
       .then(data => images[id] = URL.createObjectURL(data))
       .catch(error => console.log(error))
+}
+
+function onInputClick(id) {
+  document.getElementById(`input${id}`).click()
 }
 
 defineExpose({readAllNotes})
@@ -60,6 +74,9 @@ defineExpose({readAllNotes})
           <h2>{{ note.title }}</h2>
           <div><p>{{ note.description }}</p></div>
         </div>
+        <button type="button" class="uploadImage" @click="onInputClick(note.id)">SET IMAGE</button>
+        <input type="file" :id="'input'+note.id" @change="uploadImage(note.id, $event)" hidden>
+
         <button class="delete" @click="deleteNote(note.id)">DELETE</button>
       </div>
     </div>
@@ -89,12 +106,20 @@ div.noteContent {
   margin-left: 16px;
 }
 
+button.uploadImage {
+  color: white;
+  background-color: darkslategrey;
+  border-radius: 0px;
+  margin-right: 8px;
+}
+button.uploadImage:hover {
+  background-color: slategrey;
+}
+
 button.delete {
   color: white;
   background-color: crimson;
-  height: 48px;
-  border-radius: 0px var(--border-radius);
-  cursor: pointer;
+  border-radius: 0px var(--border-radius) 0px 0px;
 }
 button.delete:hover {
   background-color: brown;
