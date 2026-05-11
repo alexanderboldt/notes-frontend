@@ -31,4 +31,8 @@ export class Api {
   downloadImage(id) {
     return fetch(`${this.notesUrl}/${id}/images`)
   }
+
+  deleteImage(id) {
+    return fetch(`${this.notesUrl}/${id}/images`, { method: 'delete' })
+  }
 }

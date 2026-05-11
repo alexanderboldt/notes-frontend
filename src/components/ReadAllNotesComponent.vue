@@ -44,7 +44,7 @@ function uploadImage(id, event) {
   if (file) {
     api
         .uploadImage(id, file)
-        .then(res => readAllNotes())
+        .then(() => readAllNotes())
         .catch(error => console.log(error))
   }
 }
@@ -54,6 +54,13 @@ function downloadImage(id) {
       .downloadImage(id)
       .then(res => res.blob())
       .then(data => images[id] = URL.createObjectURL(data))
+      .catch(error => console.log(error))
+}
+
+function deleteImage(id) {
+  api
+      .deleteImage(id)
+      .then(() => readAllNotes())
       .catch(error => console.log(error))
 }
 
@@ -74,8 +81,10 @@ defineExpose({readAllNotes})
           <h2>{{ note.title }}</h2>
           <div><p>{{ note.description }}</p></div>
         </div>
-        <button type="button" class="uploadImage" @click="onInputClick(note.id)">SET IMAGE</button>
+        <button type="button" @click="onInputClick(note.id)">SET IMAGE</button>
         <input type="file" :id="'input'+note.id" @change="uploadImage(note.id, $event)" hidden>
+
+        <button v-if="note.filename != null" type="button" @click="deleteImage(note.id)">DELETE IMAGE</button>
 
         <button class="delete" @click="deleteNote(note.id)">DELETE</button>
       </div>
@@ -106,13 +115,13 @@ div.noteContent {
   margin-left: 16px;
 }
 
-button.uploadImage {
+button {
   color: white;
   background-color: darkslategrey;
   border-radius: 0px;
   margin-right: 8px;
 }
-button.uploadImage:hover {
+button:hover {
   background-color: slategrey;
 }
 
